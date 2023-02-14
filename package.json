@@ -1,5 +1,5 @@
 {
-  "name": "@nuant/ecs-service-image-updater",
+  "name": "ecs-service-image-updater-wait",
   "version": "1.0.0",
   "description": "Update an ECS service with a new Docker image",
   "main": "index.js",
