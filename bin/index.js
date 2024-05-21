@@ -21,6 +21,11 @@ var updater = function(options, cb) {
         options.image,
       );
 
+      newTaskDefinition["runtimePlatform"] = {
+        "cpuArchitecture": options.cpu || "X86_64",
+        "operatingSystemFamily": options.os || "LINUX"
+      }
+
       return updater.createTaskDefinition(newTaskDefinition, next);
     },
     (taskDefinition, next) => {
