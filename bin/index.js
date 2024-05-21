@@ -159,6 +159,8 @@ Object.assign(updater, {
       'taskRoleArn',
       'volumes',
       'requiresCompatibilities',
+      'runtimePlatform',
+      'tags',
       'cpu',
       'memory',
     ]);
