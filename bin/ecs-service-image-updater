@@ -12,6 +12,8 @@ var argv = require('yargs')
   .describe('cluster-arn', 'Arn of the ECS Cluster for which the Service exists on. Used in conjunction with service-name')
   .describe('output-arn-only', 'Output the new Task Definition Arn only')
   .describe('wait', 'Wait for the service to be stable after updating')
+  .describe('arch', 'Architecture of the image. Default is X86_64')
+  .describe('os', 'Operating System of the image. Default is LINUX')
   .demand([ 'image' ])
   .implies('service-name', 'cluster-arn')
   .implies('wait', 'service-name')
@@ -27,12 +29,14 @@ var options = {
   clusterArn: argv.clusterArn,
   containerNames: argv.containerNames,
   image: argv.image,
-  wait: argv.wait
+  wait: argv.wait,
 }
 
 if (argv.containerName) options.containerNames = [ argv.containerName ];
 if (argv.serviceName) options.serviceName = argv.serviceName;
 if (argv.taskDefinitionFamily) options.taskDefinitionFamily = argv.taskDefinitionFamily;
+if (argv.arch) options.arch = argv.arch;
+if (argv.os) options.os = argv.os;
 
 updater(options, (err, taskDefinitionArn) => {
   if (err) throw err;
